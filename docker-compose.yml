@@ -19,10 +19,13 @@ services:
         - DATACITE_DOI__USERPW=PURDUE.DDCC:Purduedatacite2018
         - SECRET=hd3SqnDQ0gNuGVxbfFH9AmsU1KeTv6site
         - DB__MAIN__URL=mysql://pubs-mysql:3306/example?user=root&password=PUk8zFrxsqsS83&zeroDateTimeBehavior=convertToNull
+        - HZN_S3_KEY=${HZN_S3_KEY}
+        - HZN_S3_ID=${HZN_S3_ID}
       volumes:
         - ./hzn-pubs-api:/application
         - ./data/srv:/srv
         - ./hzn-session-auth:/hzn-session-auth
+        - ./log:/application/log
       ports:
         - "3000:3000"
         - "7884:7884"

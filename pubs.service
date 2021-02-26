@@ -1,0 +1,17 @@
+[Unit]
+Description=Publications
+After=mariadb
+
+[Service]
+WorkingDirectory=/opt/hubzero/pubs
+EnvironmentFile=/opt/hubzero/pubs/pubs.conf
+ExecStart=/bin/java -Xmx2g -jar /opt/hubzero/pubs/pubs-api.jar -c /opt/hubzero/pubs/pubs.edn
+User=apache
+Type=simple
+Restart=always
+RestartSec=30
+StartLimitAction=reboot
+
+[Install]
+WantedBy=multi-user.target
+
